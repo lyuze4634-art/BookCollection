@@ -22,3 +22,21 @@
 検索機能：書名や作者で本を検索できる
 PHP+MySQL+HTML/CSSで作った小さな個人用図書整理サイト
 時間があれば、今後はお気に入り（收藏）機能も追加する予定。例えば新しいテーブルを作って、お気に入りにした本を記録して、別のページで一覧表示できるようにするつもり。
+
+
+找到解决方法了，图片校验这里改成这玩意就可以绕过fileinfo
+$allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+$tmp = $file['tmp_name'];
+$imageInfo = @getimagesize($tmp);
+
+if ($imageInfo === false) {
+    die("上传的文件不是有效图片");
+}
+
+$fileType = $imageInfo['mime'];
+
+if (!in_array($fileType, $allowedTypes)) {
+    header("Location: upload.php?error=" . urlencode("只允许上传 jpg、png、gif、webp 图片"));
+    exit;
+}
