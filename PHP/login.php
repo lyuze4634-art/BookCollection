@@ -1,7 +1,7 @@
 <?php
 session_start();
 // 固定密码
-$fixed_password = "307482682Laoli";
+$fixed_password = "114514";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
