@@ -25,6 +25,8 @@ PHP+MySQL+HTML/CSSで作った小さな個人用図書整理サイト
 
 
 找到解决方法了，图片校验这里改成这玩意就可以绕过fileinfo
+
+
 $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 
 $tmp = $file['tmp_name'];
